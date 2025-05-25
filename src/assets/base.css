@@ -1,0 +1,76 @@
+
+/* semantic color variables for this project */
+:root {
+  --color-background: #181818;
+
+  --color-background-main: rgb(196, 160, 204);
+  --color-background-medium: rgb(250, 229, 244);
+  --color-background-light: white;
+
+  --font-size-title: 15pt;
+  --font-size-large: 12pt;
+  --font-size-medium: 10pt;
+  --font-size-small: 9pt;
+
+  --color-text-dark: rgb(94, 0, 58);
+  --color-text-light: rgb(110, 67, 118);
+  --color-text-group-title: white;
+
+  --color-border-group: rgb(198, 75, 152);
+  --color-border-medium: rgb(94, 0, 58);
+  --color-border-light: rgb(110, 67, 118);
+}
+
+
+:root {
+  --color-background-main: rgb(178, 199, 153);
+  /* --color-background-main: rgb(31, 32, 35); */
+  --color-background-medium: rgba(255, 255, 255, 0.7);
+  --color-background-light: white;
+
+  --color-text-dark: rgb(86, 17, 0);
+  /* --color-text-dark: rgb(204, 86, 49); */
+  --color-text-light: rgba(86, 17, 0, 0.8);
+  --color-text-group-title: white;
+
+  --color-border-group: rgb(253, 123, 29);
+  --color-border-group: rgb(244, 106, 0);
+  /* --color-border-group: rgb(210, 63, 114); */
+  --color-border-medium: rgb(252, 160, 32);
+  --color-border-light: rgba(253, 123, 29, 0.5);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition:
+    color 0.5s,
+    background-color 0.5s;
+  line-height: 1.6;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
