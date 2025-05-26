@@ -1,43 +1,27 @@
 <template>
-  <v-row dense class="ma-0 pa-0" align="center">
+  <h2>My Characters</h2>
+
+  <v-row dense class="ma-0 pa-0" align="stretch">
+    <!-- Global Permissions -->
     <v-col cols="12">
-      <v-card v-for="oc in charData" class="ma-2">
-        <div class="d-flex flex-row">
-          <v-sheet width="200px" height="200px">
-            <v-carousel
-              width="100%"
-              height="100%"
-              :show-arrows="false"
-              cycle
-              interval="6000"
-            >
-              <v-carousel-item
-                v-for="image in oc.images"
-                :src="image"
-                cover
-              ></v-carousel-item>
-            </v-carousel>
-          </v-sheet>
-          <!-- <v-img
-            :src="oc.images[0]"
-            aspect-ratio="1"
-            style="max-width: 150px; cursor: pointer"
-            class="mx-2"
-            @click="openCharacterPage(oc)"
-          /> -->
-          <div class="d-flex flex-column">
-            <v-card-title>{{ oc.name }}</v-card-title>
-            <v-divider></v-divider>
-            <v-card-text>{{ oc.description }}</v-card-text>
-          </div>
-        </div>
-      </v-card>
+      <v-alert type="info">
+        Global Permissions: Any fan art is appreciated! Safe-for-work or
+        suggestive themes are allowed. Please ask first if you want to draw
+        something more explicit. You may draw my characters as non-anthro or
+        anthro, or even as other species if you'd like!
+      </v-alert>
+    </v-col>
+
+    <!-- Character cards -->
+    <v-col v-for="oc in charData" cols="12" md="6">
+      <CharacterInfo :oc="oc"></CharacterInfo>
     </v-col>
   </v-row>
 </template>
 
 <script>
 import { CHARACTERS } from "@/characters";
+import CharacterInfo from "@/components/CharacterInfo.vue";
 
 export default {
   component: [],
@@ -46,10 +30,6 @@ export default {
       charData: CHARACTERS,
     };
   },
-  methods: {
-    openCharacterPage(oc) {
-      window.location.href = `/characters/${oc.key}`;
-    },
-  },
+  methods: {},
 };
 </script>

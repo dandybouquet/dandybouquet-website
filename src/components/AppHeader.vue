@@ -1,69 +1,103 @@
 <template>
-  <div class="pa-100">
-    <v-row justify="center" class="ma-0">
-      <!-- Avatar -->
-      <v-col cols="6">
-        <v-card>
-          <v-row justify="center" class="ma-0">
-            <v-avatar
-              apsect-ratio="1"
-              maxHeight="200"
-              image="https://derpicdn.net/avatars/2023/3/31/6b0ee100-d01c-11ed-9252-02420a050004.jpg"
-            >
-            </v-avatar>
-          </v-row>
-        </v-card>
-      </v-col>
+  <v-row justify="center" align="center" class="ma-0">
+    <!-- Avatar -->
+    <v-col cols="12" sm="4">
+      <v-row justify="center" class="ma-0">
+        <v-img
+          apsect-ratio="1"
+          :height="$vuetify.display.xs ? 150 : 230"
+          src="/images/avatar.png"
+        >
+        </v-img>
+      </v-row>
+    </v-col>
 
-      <!-- Description -->
-      <v-col cols="6">
-        <div class="d-flex flex-column align-center">
-          <h1 class="ma-2 pa-2">Dandy Bouquet</h1>
-          <v-icon>mdi-flower</v-icon>
-          <p class="ma-2 pa-2">
-            Hi I'm Dandy! I like to draw cute ponies and colorful creatures.
-            Traditional and digital artist.
-          </p>
-          <div class="d-flex flex-row">
-            <v-btn
-              v-for="button in buttons"
-              :icon="button.icon"
-              :href="button.url"
-            ></v-btn>
-          </div>
+    <!-- Description -->
+    <v-col cols="12" sm="8">
+      <div class="d-flex flex-column align-center">
+        <!-- Name -->
+        <h1 class="d-flex flex-row align-center">
+          <v-img src="/images/bouquet.png" width="32" class="mr-3" />
+          Dandy Bouquet
+          <v-img src="/images/bouquet.png" width="32" class="ml-3" />
+        </h1>
+
+        <!-- Description -->
+        <p class="my-3">
+          Hi I'm Dandy! I like to draw cute ponies and colorful creatures.
+          Traditional and digital artist.
+        </p>
+
+        <!-- Links -->
+        <div class="d-flex flex-row">
+          <template v-for="button in links">
+            <v-hover>
+              <template v-slot:default="{ isHovering, props }">
+                <div
+                  v-bind="props"
+                  :class="{
+                    zoom: isHovering,
+                    'link-button': true,
+                    'ma-1': true,
+                  }"
+                >
+                  <v-btn
+                    v-if="button.image != null"
+                    icon
+                    :href="button.url"
+                    :title="button.text"
+                  >
+                    <v-img :src="button.image" width="25" />
+                  </v-btn>
+                  <v-btn
+                    v-else
+                    :icon="button.icon"
+                    :href="button.url"
+                    :title="button.text"
+                  >
+                  </v-btn>
+                </div>
+              </template>
+            </v-hover>
+          </template>
         </div>
-        <!--     
+      </div>
+      <!--     
         <v-card title="Dandy Bouquet" subtitle="Artist" height="100%">
           <v-card-text
             >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod.</v-card-text
           >
         </v-card> -->
-      </v-col>
-
-      <!-- </v-sheet> -->
-    </v-row>
-
-    <v-divider class="my-2" />
-
-    <!-- Navigation Buttons -->
-    <v-col cols="12" class="pa-0">
-      <v-btn
-        v-for="button in navButtons"
-        :prepend-icon="button.icon"
-        :to="button.to"
-        class="mx-1"
-        >{{ button.text }}
-      </v-btn>
     </v-col>
 
-    <v-divider class="my-2" />
+    <!-- </v-sheet> -->
+  </v-row>
+
+  <v-divider class="my-2" />
+
+  <!-- Navigation Buttons -->
+  <div class="d-flex flex-wrap flex-row justify-center">
+    <v-btn
+      v-for="button in navButtons"
+      :prepend-icon="button.icon"
+      :to="button.to"
+      class="ma-1"
+      color="primary"
+      >{{ button.text }}
+    </v-btn>
   </div>
+
+  <v-divider class="my-2" />
 </template>
 
 <script>
+import { LINKS } from "@/about";
+import IconBluesky from "./icons/IconBluesky.vue";
+
 export default {
-  component: [],
+  component: [IconBluesky],
+
   data: function () {
     return {
       navButtons: [
@@ -88,43 +122,17 @@ export default {
           to: "/commissions",
         },
         {
-          text: "About Me",
+          text: "Merch",
+          icon: "mdi-basket",
+          to: "/merch",
+        },
+        {
+          text: "Art Supplies",
           icon: "mdi-information",
           to: "/about",
         },
       ],
-      buttons: [
-        {
-          text: "Twitter",
-          url: "https://x.com/DandyBouquet",
-          icon: "mdi-twitter",
-        },
-        {
-          text: "Bluesky",
-          url: "https://bsky.app/profile/dandybouquet.bsky.social",
-          icon: "mdi-butterfly",
-        },
-        {
-          text: "DeviantArt",
-          url: "https://www.deviantart.com/dandybouquet",
-          icon: "mdi-deviantart",
-        },
-        {
-          text: "Picarto (Art Streams)",
-          url: "https://picarto.tv/DandyBouquet",
-          icon: "mdi-video",
-        },
-        {
-          text: "Derpibooru (Pony art)",
-          url: "https://derpibooru.org/search?q=artist%3Adandy%2C+safe",
-          icon: "mdi-magic-staff",
-        },
-        {
-          text: "Toyhouse (My Characters)",
-          url: "https://toyhou.se/DandyBouquet",
-          icon: "mdi-home",
-        },
-      ],
+      links: LINKS,
     };
   },
 };
@@ -132,5 +140,12 @@ export default {
 <style>
 .main {
   max-width: 1000px;
+}
+
+.link-button {
+  transition: all 0.2s;
+  &.zoom {
+    transform: scale(1.2);
+  }
 }
 </style>

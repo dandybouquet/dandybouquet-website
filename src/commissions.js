@@ -1,3 +1,5 @@
+import { artFromFile } from "./characters";
+
 export const COMMISSIONS = {
   termsOfService: [
     "All prices in USD. Payment done using PayPal Invoices before work is started",
@@ -11,7 +13,10 @@ export const COMMISSIONS = {
       name: "Marker Drawing",
       prices: ["Pony/animal = $70", "Anthro/human = $90"],
       details: ['5x7" paper', "Background = $5 to $30", "Free shipping"],
-      images: ["https://derpicdn.net/img/view/2024/11/10/3484847.png"],
+      images: [
+        artFromFile("/images/commissions/marker_feral.png"),
+        artFromFile("/images/commissions/marker_anthro.png"),
+      ],
       cols: 6,
       type: "row",
     },
@@ -24,28 +29,28 @@ export const COMMISSIONS = {
         "Background included",
         "Shipping costs extra",
       ],
-      images: ["https://derpicdn.net/img/view/2025/2/25/3555004.png"],
+      images: [artFromFile("/images/commissions/posca.png")],
       cols: 6,
       type: "row",
     },
     {
-      name: "Simple Shaded",
+      name: "Simple Shaded Digital Art",
       prices: ["Pony/animal = $60, Anthro/human = $80"],
       details: ["Cel shading with some highlights"],
       images: [
-        "https://derpicdn.net/img/view/2023/4/14/3107592.png",
-        "https://derpicdn.net/img/view/2024/11/3/3479693.png",
+        artFromFile("/images/commissions/simple_shaded_feral.png"),
+        artFromFile("/images/commissions/simple_shaded_anthro.png"),
       ],
       cols: 6,
       type: "col",
     },
     {
-      name: "Fully Shaded",
+      name: "Fully Shaded Digital Art",
       prices: ["Pony/animal = $60, Anthro/human = $80"],
       details: ["Smooth shading with more rendering"],
       images: [
-        "https://derpicdn.net/img/view/2023/4/14/3107592.png",
-        "https://derpicdn.net/img/view/2024/11/3/3479693.png",
+        artFromFile("/images/commissions/fully_shaded_feral.png"),
+        artFromFile("/images/commissions/fully_shaded_anthro.png"),
       ],
       cols: 6,
       type: "col",
@@ -60,7 +65,7 @@ export const COMMISSIONS = {
         "Simple cel-shading only",
         "Price is determined by length and complexity",
       ],
-      images: ["https://derpicdn.net/img/view/2024/11/3/3479693.png"],
+      images: [artFromFile("/images/commissions/animation.png")],
       cols: 12,
       type: "row",
     },

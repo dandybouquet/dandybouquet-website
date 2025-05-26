@@ -8,11 +8,17 @@
     scrim="#222222"
     opacity="75%"
     persistent
+    close-on-back
     @keydown.left.exact="prev"
     @keydown.right.exact="next"
     @keydown.esc="close"
   >
-    <v-toolbar density="compact" :title="title">
+    <v-toolbar density="compact">
+      <v-toolbar-title v-if="artist != null" :key="art.full">
+        By
+        <a :href="artist.url">{{ artist.name }}</a
+        >{{ dateAppend }}
+      </v-toolbar-title>
       <template v-slot:append>
         <v-divider vertical></v-divider>
         <template v-for="action in actions">
@@ -40,17 +46,20 @@
       v-model="index"
       height="100%"
       hide-delimiters=""
-      :show-arrows="!$vuetify.display.xs"
+      :show-arrows="artworks.length > 1"
       v-bind="$attrs"
     >
       <v-window-item class="v-carousel-item" v-for="art in artworks">
-        <v-img :src="art.src" :lazy-src="art.thumb" @click="close" />
+        <ArtImage :image="art" @click="close"></ArtImage>
       </v-window-item>
     </v-carousel>
   </v-dialog>
 </template>
 
 <script>
+import { ARTISTS, DEFAULT_ARTIST } from "@/artworks";
+import ArtImage from "./ArtImage.vue";
+
 export default {
   props: {},
   data: function () {
@@ -68,10 +77,18 @@ export default {
     art() {
       return this.empty ? null : this.artworks[this.index];
     },
-    title() {
-      const date = new Date(Date.parse(this.art.date));
-      const dateStr = date.toLocaleDateString();
-      return `${dateStr} - ${this.art.name}`;
+    dateAppend() {
+      if (this.art.date) {
+        const date = new Date(Date.parse(this.art.date));
+        const dateStr = date.toLocaleDateString();
+        return ` (${dateStr})`;
+      }
+      return "";
+    },
+    artist() {
+      if (!this.empty && this.art.artist != null)
+        return ARTISTS[this.art.artist];
+      return DEFAULT_ARTIST;
     },
     actions() {
       return [
@@ -95,10 +112,9 @@ export default {
         {
           name: "open-in-new",
           icon: "mdi-open-in-new",
-          text: "Open Source",
-          showText: true,
+          text: "Open Image in New Tab",
           click: () => {
-            this.openSource();
+            this.openInNewTab();
           },
         },
         { divider: true },
@@ -139,9 +155,14 @@ export default {
         (this.index + this.artworks.length - 1) % this.artworks.length;
     },
     openSource() {
-      if (this.art.source_urls.length > 0) {
-        window.open(this.art.source_urls[0], "_blank");
+      if (this.art.source != null) {
+        window.open(this.art.source, "_blank");
+      } else if (this.artist.url != null) {
+        window.open(this.artist.url, "_blank");
       }
+    },
+    openInNewTab() {
+      window.open(this.art.full, "_blank");
     },
     getSrcUrl(art) {
       return art.src;

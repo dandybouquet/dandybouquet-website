@@ -85,10 +85,16 @@ Ubuntu 24 LTS
 
 ```
 sudo apt upgrade
-sudo apt install nodejs npm
+sudo apt install nodejs npm certbot
 sudo npm install --global yarn
+sudo npm install -g serve
 ```
 
 ```
 useradd -m -g users dandy
+
+git clone ...
+cd "name"
+npm install
+yarn dev
 ```

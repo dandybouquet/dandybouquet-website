@@ -11,6 +11,7 @@ import Characters from "@/views/Characters.vue";
 import Commissions from "@/views/Commissions.vue";
 import Gallery from "@/views/Gallery.vue";
 import Home from "@/views/Home.vue";
+import Merch from "@/views/Merch.vue";
 import { createRouter, createWebHistory } from "vue-router/auto";
 
 const routes = [
@@ -19,7 +20,8 @@ const routes = [
   { path: "/gallery", component: Gallery },
   { path: "/commissions", component: Commissions },
   { path: "/characters", component: Characters },
-  { path: "/characters/:key", component: CharacterDetails },
+  // { path: "/characters/:key", component: CharacterDetails },
+  { path: "/merch", component: Merch },
   { path: "/about", component: About },
 ];
 
