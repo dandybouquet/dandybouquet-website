@@ -78,7 +78,7 @@
     <div class="d-flex flex-column justify-center align-center">
       <!-- Gallery Sample -->
       <v-row dense class="ma-0 pa-0" align="center" style="width: 100%">
-        <v-col v-for="art in artworks" cols="4" xs="6" sm="4" md="3" lg="2">
+        <v-col v-for="art in artworks" cols="4" xs="4" sm="4" md="2" lg="2">
           <ImageCard
             :image="art"
             :hideArtist="true"

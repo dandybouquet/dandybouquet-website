@@ -1,4 +1,4 @@
-import { artFromFile } from "./characters";
+import { artFromFile, artFromDerpi } from "./characters";
 
 export const COMMISSIONS = {
   termsOfService: [
@@ -14,7 +14,7 @@ export const COMMISSIONS = {
       prices: ["Pony/animal = $70", "Anthro/human = $90"],
       details: ['5x7" paper', "Background = $5 to $30", "Free shipping"],
       images: [
-        artFromFile("/images/commissions/marker_feral.png"),
+        artFromDerpi(3484847),
         artFromFile("/images/commissions/marker_anthro.png"),
       ],
       cols: 6,
@@ -29,7 +29,7 @@ export const COMMISSIONS = {
         "Background included",
         "Shipping costs extra",
       ],
-      images: [artFromFile("/images/commissions/posca.png")],
+      images: [artFromDerpi(3555737)],
       cols: 6,
       type: "row",
     },
@@ -38,8 +38,8 @@ export const COMMISSIONS = {
       prices: ["Pony/animal = $60, Anthro/human = $80"],
       details: ["Cel shading with some highlights"],
       images: [
-        artFromFile("/images/commissions/simple_shaded_feral.png"),
-        artFromFile("/images/commissions/simple_shaded_anthro.png"),
+        artFromDerpi(3107592), // Candy Apples
+        artFromDerpi(3575791), // Stagea
       ],
       cols: 6,
       type: "col",
@@ -48,10 +48,7 @@ export const COMMISSIONS = {
       name: "Fully Shaded Digital Art",
       prices: ["Pony/animal = $60, Anthro/human = $80"],
       details: ["Smooth shading with more rendering"],
-      images: [
-        artFromFile("/images/commissions/fully_shaded_feral.png"),
-        artFromFile("/images/commissions/fully_shaded_anthro.png"),
-      ],
+      images: [artFromDerpi(3562692), artFromDerpi(3584820)],
       cols: 6,
       type: "col",
     },

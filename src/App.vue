@@ -26,6 +26,27 @@
 <script setup>
 import AppHeader from "@/components/AppHeader";
 import AppFooter from "./components/AppFooter.vue";
+
+import { useHead } from "@unhead/vue";
+
+const description =
+  "Hi I'm Dandy! I like to draw cute ponies and colorful creatures. Traditional and digital artist.";
+const image = "https://www.dandybouquet.com/images/bouquet.png";
+
+useHead({
+  meta: [
+    { property: "og:title", content: "Dandy Bouquet Art" },
+    { property: "og:site_name", content: "Dandy Bouquet Art" },
+    { property: "og:description", content: description },
+    { property: "og:image", content: image },
+    { property: "og:type", content: "article" },
+    { property: "og:url", content: "https://www.dandybouquet.com/" },
+    { name: "twitter:description", content: description },
+    { name: "twitter:site", content: "@dandybouquet" },
+    { name: "twitter:creator", content: "@dandybouquet" },
+    { name: "twitter:card", content: description },
+  ],
+});
 </script>
 
 <style>

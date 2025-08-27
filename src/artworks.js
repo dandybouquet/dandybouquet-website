@@ -23,6 +23,17 @@ allArtworks = allArtworks.sort((a, b) => {
 export const ALL_ARTWORKS = allArtworks;
 export const FEATURED_ARTWORKS = featuredImages.images;
 
+export const NULL_ARTWORK = {
+  artist: "N/A",
+  date: "2025-08-15T15:09:31Z",
+  full: null,
+  name: "error",
+  nsfw: false,
+  source: null,
+  thumb: null,
+  derpi_id: null,
+};
+
 export const ARTISTS = {
   dandybouquet: {
     name: "Dandy Bouquet",

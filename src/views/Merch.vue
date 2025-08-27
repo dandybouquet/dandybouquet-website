@@ -20,11 +20,14 @@
           </p>
 
           <v-divider class="my-4"></v-divider>
-          <p>Conventions I've vended at:</p>
-          <ul>
-            <li><a href="https://marefair.org/">Mare Fair</a> (2023, 2025)</li>
-          </ul>
-
+          <p>Conventions I've vended at (or will be vending at):</p>
+          <p v-for="year in vendingSchedule">
+            {{ year.year }}:
+            <template v-for="con in year.cons">
+              <a :href="con.url">{{ con.name }}</a
+              >,
+            </template>
+          </p>
           <v-divider class="my-4"></v-divider>
 
           <p>TODO</p>
@@ -35,11 +38,24 @@
 </template>
 
 <script>
+import { CONVENTIONS, VENDING_SCHEDULE } from "@/merch";
+
 export default {
   data: function () {
-    return {};
+    return {
+      vendingSchedule: [],
+    };
   },
   computed: {},
   methods: {},
+  mounted() {
+    for (const [year, cons] of Object.entries(VENDING_SCHEDULE)) {
+      let info = { year: year, cons: [] };
+      this.vendingSchedule.push(info);
+      cons.forEach((con) => {
+        info.cons.push(CONVENTIONS[con]);
+      });
+    }
+  },
 };
 </script>

@@ -1,3 +1,5 @@
+import { ALL_ARTWORKS, NULL_ARTWORK } from "./artworks";
+
 export const artFromFile = function (path) {
   let data = { full: path, artist: "" };
 
@@ -20,6 +22,14 @@ export const artFromFile = function (path) {
   }
 
   return data;
+};
+
+export const artFromDerpi = function (derpi_id) {
+  const index = ALL_ARTWORKS.findIndex((art) => art.derpi_id == derpi_id);
+  if (index >= 0) {
+    return ALL_ARTWORKS[index];
+  }
+  return NULL_ARTWORK;
 };
 
 const charData = [

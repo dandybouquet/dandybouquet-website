@@ -16,11 +16,12 @@
     <v-col cols="12" sm="8">
       <div class="d-flex flex-column align-center">
         <!-- Name -->
-        <h1 class="d-flex flex-row align-center">
-          <v-img src="/images/bouquet.png" width="32" class="mr-3" />
+        <IconLogoFull height="90px"></IconLogoFull>
+        <!-- <h1 class="d-flex flex-row align-center">
+          <IconBouquet width="32" class="mx-3"></IconBouquet>
           Dandy Bouquet
-          <v-img src="/images/bouquet.png" width="32" class="ml-3" />
-        </h1>
+          <IconBouquet width="32" class="mx-3"></IconBouquet>
+        </h1> -->
 
         <!-- Description -->
         <p class="my-3">
@@ -94,6 +95,7 @@
 <script>
 import { LINKS } from "@/about";
 import IconBluesky from "./icons/IconBluesky.vue";
+import IconLogoFull from "./icons/IconLogoFull.vue";
 
 export default {
   component: [IconBluesky],

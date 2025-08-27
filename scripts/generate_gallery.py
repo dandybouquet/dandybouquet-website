@@ -17,6 +17,7 @@ def derpi_to_image(image: dict) -> dict:
         "source": image["source_url"],
         "date": image["created_at"],
         "artist": "dandybouquet",
+        "derpi_id": image["id"],
     }
 
 
