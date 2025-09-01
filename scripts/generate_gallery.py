@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import time
 import yaml
 import re
@@ -80,20 +82,36 @@ def process_file(path: Path) -> dict:
 
 
 def main():
+    """Main function"""
+    # Create argument parser
     parser = ArgumentParser()
     # parser.add_argument("-g", "--gallery", type=int, default=26328)
     # parser.add_argument("-o", "--output", type=str, default="src/assets/gallery.json")
+    parser.add_argument(
+        "-k", "--key", type=str,
+        default=str(Path.home().joinpath(".keys/derpibooru")),
+        help="Derpibooru API Key file")
 
+    # Parse arguments
     args = parser.parse_args()
+    key_path = Path(args.key)
+    if not key_path.is_file():
+        parser.error(f"no such key file: {key_path}")
     # output_path = Path(args.output)
 
+    # Read API Key from file
+    with open(key_path, "r", encoding="utf-8") as stream:
+        derpi_api_key = stream.read().strip()
+
+    # Load config file
     config_path = Path(__file__).resolve().parent.joinpath("config.yaml")
     print(f"Loading config: {config_path}")
     with open(config_path, "r") as stream:
         config = yaml.safe_load(stream)
 
+    return
+
     galleries = config["galleries"]
-    derpi_api_key = config["derpi_api_key"]
 
     for gallery in galleries:
         images = []

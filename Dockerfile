@@ -1,3 +1,5 @@
+# https://cli.vuejs.org/guide/deployment.html
+
 # Build image
 FROM docker.io/library/node:latest as build-stage
 WORKDIR /app

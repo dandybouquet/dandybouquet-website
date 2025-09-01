@@ -1,0 +1,23 @@
+# derpi_gallery: Derpibooru gallery ID to pull images from
+# file_source: additional images from file system to include
+# path: path to the output json file
+# nsfw: True if the images need a mature content warning
+
+galleries:
+  # Featured artworks that show on homepage
+  - derpi_gallery: 26333
+    file_source: null
+    path: "src/assets/featured_art.json"
+    nsfw: false
+
+  # SFW Gallery
+  - derpi_gallery: 26328
+    file_source: "public/images/gallery/nonpony"
+    path: "src/assets/gallery.json"
+    nsfw: false
+
+  # NSFW Gallery
+  - derpi_gallery: 26334
+    file_source: "public/images/gallery/nsfw"
+    path: "src/assets/nsfw_gallery.json"
+    nsfw: true

@@ -30,7 +30,7 @@
           </p>
           <v-divider class="my-4"></v-divider>
 
-          <p>TODO</p>
+          <p>TODO.</p>
         </v-card-text>
       </v-card>
     </v-col>

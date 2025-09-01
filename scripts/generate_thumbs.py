@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import cv2
 from pathlib import Path
 import numpy

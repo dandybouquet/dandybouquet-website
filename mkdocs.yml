@@ -1,0 +1,53 @@
+site_name: Dandy Bouquet Web Server
+# site_url: https://www.mkdocs.org/
+site_description: Project documentation
+site_author: Dandy Bouquet
+
+# repo_url: https://github.com/mkdocs/mkdocs/
+# edit_uri: blob/master/docs/
+
+theme:
+  name: material
+  logo: images/bouquet.png
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      primary: orange
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+plugins:
+  - search
+
+nav:
+  - Overview: index.md
+  - Machine Setup: setup.md
+  - SSL Certificates: ssl.md
+  - Art Gallery: gallery.md
+  - Helpful Links: links.md
