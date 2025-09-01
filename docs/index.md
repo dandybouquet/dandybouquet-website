@@ -1,5 +1,7 @@
 # Dandy Bouquet Web Server
 
+![](https://www.dandybouquet.com/images/logo.png)
+
 Documentation for building and running the website [dandybouquet.com](https://www.dandybouquet.com)
 
 ## Quick Reference
